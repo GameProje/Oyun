@@ -8,11 +8,11 @@ using namespace std;
 
 int main( )
 {
-   	initwindow( 900 , 600 , "WinBGIm" );
+   	initwindow( 900 , 607 , "WinBGIm" );
 	setbkcolor(renk_yan);
 	cleardevice();
 	setfillstyle(1,renk_ic);
-	bar(199,0,699,600);
+	bar(200,0,690,608);
 	
    
     
