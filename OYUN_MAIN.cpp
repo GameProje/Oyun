@@ -55,8 +55,9 @@ void ana_menu(){
      while(tus!=13){
      if(tus==72) if(y==0){y=100;} else {y=(y-50)%150;}
     if(tus==80) y=(y+50)%150;
-      setfillstyle(1,BLUE);bar(x,y+250,x+20,y+270);
+      setfillstyle(1,BLACK);bar(x,y+250,x+20,y+270);
      tus=getch();
+     Beep(200,30);
       setfillstyle(1,renk_ic);bar(x,y+250,x+20,y+270);            
       }
       if(y==100) exit(1);
