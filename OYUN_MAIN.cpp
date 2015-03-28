@@ -1,21 +1,18 @@
 #include <stdio.h>
-#include <iostream>
 #include <graphics.h>
 
-using namespace std;
-
-int renk_yan=COLOR(224,224,224);
-int renk_ic=COLOR(245,245,245);
+int renk_yan = COLOR(224,224,224);
+int renk_ic = COLOR(245,245,245);
+int renk_cizgi = COLOR(236,239,241);
 
 void ana_menu();
+void arkaPlan();
 
 int main( )
 {
    	initwindow( 900 , 609 , "WinBGIm" );
-	setbkcolor(renk_yan);
-	cleardevice();
-	setfillstyle(1,renk_ic);
-	bar(200,0,690,608);
+   	
+	arkaPlan();
 	ana_menu();
    
     outtextxy(400,250,"Z<AAASDAV");
@@ -27,6 +24,21 @@ int main( )
 	closegraph( );
     return( 0 );
 }
+
+void arkaPlan(){
+    
+    int i, k=200;
+   	setbkcolor(renk_yan);
+	cleardevice();
+	setfillstyle(1,renk_ic);
+	bar(200,0,690,608);
+	
+     for(i=0; i<15; i++, k+=35){
+      
+       setcolor(renk_cizgi);
+       line(0+k,0,0+k,getmaxy());
+     }
+}  
 
 
 void ana_menu(){
