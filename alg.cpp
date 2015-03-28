@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+//adsadasdasd
+
+
 //Yeni Kod
 int kutuGetir();
 
