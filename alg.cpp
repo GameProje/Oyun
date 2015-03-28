@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-
+//Yeni Kod
 int kutuGetir();
 
 
