@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <graphics.h>
+#include <windows.h>
 
 int renk_yan = COLOR(224,224,224);
 int renk_ic = COLOR(245,245,245);
@@ -7,26 +8,26 @@ int renk_cizgi = COLOR(236,239,241);
 
 void ana_menu();
 void arkaPlan();
+void arkaPlan_Oyun(int w);
+void tutorial();
+void blog();
+void kahraman(int x);
 
-void blog(int al);
+//int  check(int); 
+
+
 int main( )
 {
-    srand(time(NULL));
-    int rastgele;
-    
-    
    	initwindow( 900 , 609 , "WinBGIm" );
-   
+   	
 	arkaPlan();
 	ana_menu();
-	arkaPlan();
-   
- while(1){
-          rastgele=rand()%7; 
-          if(rastgele==0){rastgele=rastgele+1;}
-          rastgele=rastgele*35;
-     blog(rastgele);}
-
+    
+    //maine döndümü diye kontrol için SİLİNECEK
+    arkaPlan();
+    outtextxy(390,250,"BİTTİİİİİİİİİİİ");
+    
+    
 	while( !kbhit() ); 
   
     
@@ -40,14 +41,19 @@ void arkaPlan(){
     int i, k=200;
    	setbkcolor(renk_yan);
 	cleardevice();
-	setfillstyle(7,renk_ic);
-	bar(200,0,690,608);
+	setfillstyle(1,renk_ic);
+	bar(180,0,705,608);
 	
-   
+     for(i=0; i<15; i++, k+=35){
+      
+       setcolor(renk_cizgi);
+       line(0+k,0,0+k,getmaxy());
+     }
 }  
 
 
 void ana_menu(){
+     arkaPlan();
      settextstyle(1,0,40);
      setbkcolor(renk_ic);
      setcolor(BLACK);
@@ -61,36 +67,41 @@ void ana_menu(){
      while(tus!=13){
      if(tus==72) if(y==0){y=100;} else {y=(y-50)%150;}
     if(tus==80) y=(y+50)%150;
-      setfillstyle(1,BLUE);bar(x,y+250,x+20,y+270);
+      setfillstyle(1,BLACK);bar(x,y+250,x+20,y+270);
      tus=getch();
-      setfillstyle(7,renk_ic);bar(x,y+250,x+20,y+270);            
+     Beep(200,30);
+      setfillstyle(1,renk_ic);bar(x,y+250,x+20,y+270);            
       }
+      
+      if(y==0) blog() ;
+      if(y==50)  tutorial(); 
       if(y==100) exit(1);
-      }
-
-
-
-
-
-void blog(int al){
-     int i=0,k;
+    }
+void tutorial(){
+     arkaPlan();
      
+     
+     getch();
+    }    
+void blog(){
+     arkaPlan_Oyun(0);
+     int i=0,k;
+     int al;
      int sag;
-     sag=200+al+105;
      setcolor(1);
      settextstyle(1,0,38);
-outtextxy(255,50,"HAZIR OL 3");
-settextstyle(1,0,38);
+   outtextxy(255,50,"HAZIR OL 3");
+   settextstyle(1,0,38);
      delay(1100);
-     arkaPlan();
-outtextxy(255,50,"HAZIR OL 2");
+     arkaPlan_Oyun(0);
+   outtextxy(255,50,"HAZIR OL 2");
     settextstyle(1,0,38);
         delay(1100);
-     arkaPlan();
-outtextxy(255,50,"HAZIR OL 1");
+     arkaPlan_Oyun(0);
+   outtextxy(255,50,"HAZIR OL 1");
     
    delay(1100);
-     arkaPlan();
+     arkaPlan_Oyun(0);
 
 
              while (1){
@@ -107,10 +118,7 @@ outtextxy(255,50,"HAZIR OL 1");
       setfillstyle(1,k+3);
      bar(sag,0+(k*32),691,32+(k*32));
      delay(400);
-                   setfillstyle(7,renk_ic);
-      bar(200,0+(k*32),200+al,32+(k*32));
-     bar(sag,0+(k*32),691,32+(k*32));
-                                     
+                   arkaPlan_Oyun((i%2)+4);
      i++; 
      
  
@@ -118,3 +126,15 @@ outtextxy(255,50,"HAZIR OL 1");
      
      
      }
+      
+void arkaPlan_Oyun(int w){
+   	setbkcolor(renk_ic);
+	setfillstyle(w,0);
+	bar(200,0,690,608);
+	}
+void kahraman(int x){
+     setfillstyle(1,BLACK);
+     bar(33,33,33,33);
+     
+     }         
+     
