@@ -50,13 +50,13 @@ void ana_menu(){
      outtextxy(400,250,"OYNA");
      outtextxy(330,300,"NASIL OYNANIR?");
      outtextxy(400,350,"ÇIKIŞ!");
-     int a=0;
-     int x=300,y=320;
-    while(getch()!=13){
-     
-     if (a%2==0) {setfillstyle(1,BLUE);bar(x,x,y,y);}
-     else {setfillstyle(1,renk_ic);bar(x,x,y,y);}
-     a++;
-     delay(200);
-     }
+     char tus=65;
+     int x=280,y=250;
+     while(tus!=13){
+     if(tus==72) y-=50;
+    if(tus==80) y+=50;
+      setfillstyle(1,BLUE);bar(x,y,x+20,y+20);
+     tus=getch();
+      setfillstyle(1,renk_ic);bar(x,y,x+20,y+20);            
+      }
      }
