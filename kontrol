@@ -1,0 +1,23 @@
+#include <conio.h>
+#include <stdio.h>
+
+
+
+int main()
+{
+	
+	 int key = 0;
+    while(1)
+    {
+    	
+        if (_kbhit()) {
+      key =_getch();
+
+      if (key == 75){
+		  printf("hi");
+		  break;
+      }
+        
+    } 
+    }
+}
