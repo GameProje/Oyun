@@ -1,39 +1,19 @@
-#include <stdio.h>
-#include <conio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <graphics.h>
-//adsadasdasd
+
+void blog_ciz(int , int,  int);
 
 
-//Yeni Kod
-int kutuGetir();
 
-
-	int kutuGetir(){
-		
-		
-		int solKutu = 40 + (rand() % 535);
-	
-		return solKutu;
-		
-	}
-
-int main(){
-	srand( time(NULL) );
-	int solKutu, sagKutu, KARAKTER = 40;	
-
-	for( int i = 0; i < 100; i++){
-		
-	
-		solKutu = kutuGetir();
-		sagKutu = 640 - solKutu - KARAKTER;
-	 	
-	 	printf("%d\t%d\n", solKutu, sagKutu);
-	
-	}
-	
-	
-	getch();
-	return 0;
-}
+void blog_ciz(int al, int h, int col){
+   
+     int sag;
+                   kahraman(0);
+   
+           sag=180+al+105;  
+              setfillstyle(1,col);
+     bar(180,1+(h*32),180+al,33+(h*32));
+              setfillstyle(1,col);
+     bar(sag,1+(h*32),705,33+(h*32));
+                delay(600);
+                   arkaPlan_Oyun(0);
+     
+     }             
