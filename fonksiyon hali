@@ -18,7 +18,7 @@ void blog_ciz(int , int,  int);
 void pause();
 void blog_ciz(int , int, int);
 void blog_sil(int, int, int);
-void skor();
+void skor(int s);
 int  rastgele(int);
 void gameover();
 
@@ -116,7 +116,7 @@ void tutorial(){
     }    
 void oyun(){
      arkaPlan_Oyun(0);
-     int i=0,k,l,m,r,r1,r2,r3,n;
+     int i=0,k,l,m,r,r1,r2,r3,n,sko=0;
      int ras,renk=1;     
      int x=0;
      int key = 0;
@@ -128,8 +128,21 @@ void oyun(){
                    if (kbhit()){
                             
            key =getch();
-             if (key == 75 || key == 'a'){   if(x>-210){kahraman_sil(x);x-=35;kahraman(x);}}
-             if (key == 77 || key == 'd'){   if(x<+210){kahraman_sil(x);x+=35;kahraman(x);}}
+             if (key == 75 || key == 'a'){   if(x>-210){
+                     if(k==18){if((x+390)!=((180+r))) gameover();   }   
+                     if(l==18){if((x+390)!=((180+r1))) gameover();   }                                   
+                     if(m==18){if((x+390)!=((180+r2))) gameover();   }
+                     if(n==18){if((x+390)!=((180+r3))) gameover();   }
+                     kahraman_sil(x);x-=35;kahraman(x);
+             }}
+             if (key == 77 || key == 'd'){   
+             {if(x<+210){
+                   if(k==18){if((x+390)!=((180+r))) gameover();   }   
+                   if(l==18){if((x+390)!=((180+r1))) gameover();   }                                   
+                   if(m==18){if((x+390)!=((180+r2))) gameover();   }
+                   if(n==18){if((x+390)!=((180+r3))) gameover();   }
+                   kahraman_sil(x);x+=35;kahraman(x);}
+             }}
              if (key == 27){ pause(); }       
            }
                 
@@ -159,10 +172,11 @@ void oyun(){
                  blog_ciz(r,k,renk+3); k++;
            
            
-                  if(k>=19) k=0;
-                  if(l>=19) l=0;
-                  if(m>=19) m=0;
-                  if(n>=19) n=0;
+                  if(k>=19){ k=0;sko++;}
+                  if(l>=19){l=0;sko++;}
+                  if(m>=19){ m=0;sko++;}
+                  if(n>=19){n=0; sko++;}
+                  skor(sko);
           i++;
          }
      }                                  
@@ -239,8 +253,22 @@ int rastgele(int count){
           return ras;   }
 
     } 
-//void skor  
+void skor (int s){
+     char aa[10];
+     s=s-2;
+     sprintf(aa,"%d",s);
+     setcolor(BLACK);
+     setbkcolor(renk_yan);
+     settextstyle(2,0,15);
+     setfillstyle(1,renk_yan);
+     bar(750,90,800,110);
+     outtextxy(750,90,aa);
+     outtextxy(750,50,"SKOR");
+     
+} 
 void gameover(){
+     settextstyle(2,0,14);
+     arkaPlan_Oyun(1);
      outtextxy(400,250,"GAMEOVER");        
           delay(5000);
          ana_menu();   
