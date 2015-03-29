@@ -14,6 +14,10 @@ void oyun();
 void kahraman(int x);
 void hazir_ol();
 void blog_ciz(int , int,  int);
+void pause();
+void blog_ciz(int , int, int);
+void blog_sil(int, int, int);
+int  rastgele(int);
 
 
 
@@ -50,7 +54,11 @@ void arkaPlan(){
        setcolor(renk_cizgi);
        line(0+k,0,0+k,getmaxy());
      }
-}  
+} 
+void pause(){
+     setfillstyle(1,renk_yan);
+     
+     } 
 
 
 void ana_menu(){
@@ -86,7 +94,7 @@ void tutorial(){
     }    
 void oyun(){
      arkaPlan_Oyun(0);
-     int i=0,k;
+     int i=0,k,l,m,r,r1,r2;
      int ras,renk=1;     
      int x=0;
      int key = 0;
@@ -99,17 +107,21 @@ void oyun(){
                             
            key =getch();
              if (key == 75){   if(x>-210)x-=35;}
-             if (key == 77){   if(x<+210)x+=35;}       
+             if (key == 77){   if(x<+210)x+=35;}
+             if (key == 27){pause();}       
            }
                 
-                   if(i%19==0){
-                   ras=rand()%13; 
-          if(ras==0){ras=ras+1;}
-          ras=ras*35;}
-          k=i%19;
-          blog_ciz(ras,k,renk);
-     
-     
+                  if(i%29==0) r=rastgele(i);
+                  if(i%29==5) r1=rastgele(i);
+                   if(i%29==10) r2=rastgele(i);
+                  k=i%29;
+                  l=k-5;
+                  m=k-10;
+          blog_ciz(r2,m,renk+3); 
+          blog_ciz(r1,l,renk+10);
+          blog_ciz(r,k,renk);
+ 
+          
      delay(20);
                    arkaPlan_Oyun(0);
      oyun_hizi++; 
@@ -146,13 +158,38 @@ void hazir_ol(){
        delay(1100);
      arkaPlan_Oyun(0);
     }
+
 void blog_ciz(int al, int h, int col){
    
-     int sag;         
+          int sag;
+  
            sag=180+al+105;  
               setfillstyle(1,col);
-     bar(180,1+(h*32),180+al,33+(h*32));
+      bar(180,1+(h*32),180+al,33+(h*32));
               setfillstyle(1,col);
-     bar(sag,1+(h*32),705,33+(h*32));
-           
-     }
+       bar(sag,1+(h*32),705,33+(h*32)); }   
+     
+     
+     
+void blog_sil(int al, int h, int col){
+   
+        int sag;
+ 
+       sag=180+al+105;  
+              setfillstyle(1,renk_ic);
+        bar(180,1+(h*32),180+al,33+(h*32));
+              setfillstyle(1,renk_ic);
+       bar(sag,1+(h*32),705,33+(h*32));  }
+       
+       
+       
+       
+int rastgele(int count){
+    int ras;
+    if (count%29==0||count%29==5||count%29==10){ras=rand()%13; 
+          if(ras==0){ras=ras+1;}
+          ras=ras*35;
+
+          return ras;   }
+
+    }     
