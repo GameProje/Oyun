@@ -18,6 +18,7 @@ void blog_ciz(int , int,  int);
 void pause();
 void blog_ciz(int , int, int);
 void blog_sil(int, int, int);
+void skor();
 int  rastgele(int);
 
 
@@ -115,7 +116,7 @@ void tutorial(){
     }    
 void oyun(){
      arkaPlan_Oyun(0);
-     int i=0,k,l,m,r,r1,r2;
+     int i=0,k,l,m,r,r1,r2,r3,n;
      int ras,renk=1;     
      int x=0;
      int key = 0;
@@ -141,16 +142,24 @@ void oyun(){
      oyun_hizi++; 
      if(oyun_hizi==500){ oyun_hizi=0;
      arkaPlan_Oyun(0);
-                  if(i%29==0) r=rastgele(i);
-                  if(i%29==5) r1=rastgele(i);
-                  if(i%29==10) r2=rastgele(i);
-                  k=i%29;
-                  l=k-5;
-                  m=k-10;
-          
-          blog_ciz(r2,m,renk); 
-          blog_ciz(r1,l,renk+10);
-          blog_ciz(r,k,renk+3);
+     
+                  if(k==0) r=rastgele(k);
+                  if(l==0) r1=rastgele(l);
+                  if(m==0) r2=rastgele(m);
+                  if(n==0) r3=rastgele(n);
+                  
+                 
+                  
+            if(i>14){ blog_ciz(r3,n,renk+13);n++; }         
+            if(i>9){ blog_ciz(r2,m,renk);m++; }
+            if(i>4){ blog_ciz(r1,l,renk+9);l++;}
+                 blog_ciz(r,k,renk+3); k++;
+           
+           
+                  if(k>=19) k=0;
+                  if(l>=19) l=0;
+                  if(m>=19) m=0;
+                  if(n>=19) n=0;
           i++;
          }
      }                                  
@@ -218,10 +227,13 @@ void blog_sil(int al, int h, int col){
        
 int rastgele(int count){
     int ras;
-    if (count%29==0||count%29==5||count%29==10){ras=rand()%13; 
+    if (count==0){
+                srand(time(NULL));                                             
+          ras=rand()%13; 
           if(ras==0){ras=ras+1;}
           ras=ras*35;
 
           return ras;   }
 
-    }     
+    } 
+//void skor    
