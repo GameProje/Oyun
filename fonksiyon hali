@@ -88,11 +88,19 @@ void blog(){
      int i=0,k;
      int al;
      int sag;
+     int x=0;
+     int key = 0;
   
 
 
       while (1){
-                   kahraman(0);
+                   kahraman(x);
+                   if (kbhit()){
+           key =getch();
+
+             if (key == 75){if(x>-210)x-=35;}
+             if (key == 77){if(x<+210)x+=35;}       
+           }
                    if(k<13){
                    al=rand()%13; 
           if(al==0){al=al+1;}
