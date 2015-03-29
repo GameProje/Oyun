@@ -20,7 +20,7 @@ void blog_ciz(int , int, int);
 void blog_sil(int, int, int);
 void skor();
 int  rastgele(int);
-
+void gameover();
 
 
 int main( )
@@ -128,8 +128,8 @@ void oyun(){
                    if (kbhit()){
                             
            key =getch();
-             if (key == 75){   if(x>-210){kahraman_sil(x);x-=35;kahraman(x);}}
-             if (key == 77){   if(x<+210){kahraman_sil(x);x+=35;kahraman(x);}}
+             if (key == 75 || key == 'a'){   if(x>-210){kahraman_sil(x);x-=35;kahraman(x);}}
+             if (key == 77 || key == 'd'){   if(x<+210){kahraman_sil(x);x+=35;kahraman(x);}}
              if (key == 27){ pause(); }       
            }
                 
@@ -142,7 +142,10 @@ void oyun(){
      oyun_hizi++; 
      if(oyun_hizi==500){ oyun_hizi=0;
      arkaPlan_Oyun(0);
-     
+                   if(k==18){if((x+390)!=((180+r))) gameover();   }   
+                   if(l==18){if((x+390)!=((180+r1))) gameover();   }                                   
+                   if(m==18){if((x+390)!=((180+r2))) gameover();   }
+                   if(n==18){if((x+390)!=((180+r3))) gameover();   }
                   if(k==0) r=rastgele(k);
                   if(l==0) r1=rastgele(l);
                   if(m==0) r2=rastgele(m);
@@ -169,25 +172,13 @@ void oyun(){
       
 void arkaPlan_Oyun(int w){
    	setbkcolor(renk_ic);
-	setfillstyle(w,0);
+	setfillstyle(1,renk_ic);
 	bar(180,0,705,609);
 	}
 	
 void kahraman(int x){
-     int check = 0, sonRenk, sonRenk2;
-     sonRenk = getpixel(390+x,600);
-     sonRenk2 = getpixel(495+x,600);
-     if (sonRenk != renk_ic && sonRenk2 != renk_ic) check++;
-     if (sonRenk != 0 && sonRenk2 != 0) check++;
-     if (sonRenk != renk_yan && sonRenk2 != renk_yan) check++;
-     if( check==3){
-         outtextxy(400,250,"GAMEOVER");        
-          delay(5000);
-         ana_menu();
-         }
      setfillstyle(1,BLACK);
-     bar(390+x,577,495+x,609);   
-     
+     bar(390+x,577,495+x,609);
      }
       
 void kahraman_sil(int x){
@@ -212,13 +203,13 @@ void hazir_ol(){
      arkaPlan_Oyun(0);
     }
 
-void blog_ciz(int al, int h, int col){
+void blog_ciz(int r, int h, int col){
    
           int sag;
   
-           sag=180+al+105;  
+           sag=180+r+105;  
               setfillstyle(1,col);
-      bar(180,1+(h*32),180+al,33+(h*32));
+      bar(180,1+(h*32),180+r,33+(h*32));
               setfillstyle(1,col);
        bar(sag,1+(h*32),705,33+(h*32)); }   
      
@@ -248,4 +239,10 @@ int rastgele(int count){
           return ras;   }
 
     } 
-//void skor    
+//void skor  
+void gameover(){
+     outtextxy(400,250,"GAMEOVER");        
+          delay(5000);
+         ana_menu();   
+     
+     }  
