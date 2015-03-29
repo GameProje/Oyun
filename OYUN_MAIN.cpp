@@ -57,8 +57,28 @@ void arkaPlan(){
      }
 } 
 void pause(){
+     char tus=65;
+     int x=330,y=0;
      setfillstyle(1,renk_yan);
-     
+     bar(300,200,600,400);
+     setbkcolor(renk_yan);
+     settextstyle(2,0,8);
+     outtextxy(382,250,"DEVAM ET");
+     outtextxy(380,300,"ANA MENÜ");
+     outtextxy(420,350,"ÇIKIŞ");
+     while(tus!=13){
+     if(tus==72) if(y==0){y=100;} else {y=(y-50)%150;}
+     if(tus==80) y=(y+50)%150;
+      setfillstyle(1,BLACK);bar(x,y+250,x+20,y+270);
+     tus=getch();
+     Beep(200,30);
+      setfillstyle(1,renk_yan);bar(x,y+250,x+20,y+270);            
+      }
+      
+      if(y==0){ return;}
+      if(y==50){ closegraph(); main();} 
+      if(y==100) exit(1);
+     getch();
      } 
 
 
