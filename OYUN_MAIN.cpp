@@ -10,10 +10,11 @@ void ana_menu();
 void arkaPlan();
 void arkaPlan_Oyun(int w);
 void tutorial();
-void blog();
+void oyun();
 void kahraman(int x);
+void hazir_ol();
+void blog_ciz(int , int,  int);
 
-//int  check(int); 
 
 
 int main( )
@@ -73,7 +74,7 @@ void ana_menu(){
       setfillstyle(1,renk_ic);bar(x,y+250,x+20,y+270);            
       }
       
-      if(y==0) blog() ;
+      if(y==0) hazir_ol(); oyun() ;
       if(y==50)  tutorial(); 
       if(y==100) exit(1);
     }
@@ -83,12 +84,57 @@ void tutorial(){
      
      getch();
     }    
-void blog(){
+void oyun(){
      arkaPlan_Oyun(0);
      int i=0,k;
-     int al;
-     int sag;
-     setcolor(1);
+     int ras,renk=1;     
+     int x=0;
+     int key = 0;
+     int oyun_hizi=0;
+
+
+      while (1){
+                   kahraman(x);
+                   if (kbhit()){
+                            
+           key =getch();
+             if (key == 75){   if(x>-210)x-=35;}
+             if (key == 77){   if(x<+210)x+=35;}       
+           }
+                
+                   if(i%19==0){
+                   ras=rand()%13; 
+          if(ras==0){ras=ras+1;}
+          ras=ras*35;}
+          k=i%19;
+          blog_ciz(ras,k,renk);
+     
+     
+     delay(20);
+                   arkaPlan_Oyun(0);
+     oyun_hizi++; 
+     if(oyun_hizi==20){i++; oyun_hizi=0;}
+     }                                   // while
+     
+     
+     }
+      
+void arkaPlan_Oyun(int w){
+   	setbkcolor(renk_ic);
+	setfillstyle(w,0);
+	bar(180,0,705,609);
+	}
+void kahraman(int x){
+     setfillstyle(1,BLACK);
+     bar(390+x,577,495+x,609);
+     
+     }         
+     
+     
+void hazir_ol(){
+          
+           arkaPlan_Oyun(0);
+             setcolor(1);
      settextstyle(1,0,38);
    outtextxy(255,50,"HAZIR OL 3");
    settextstyle(1,0,38);
@@ -101,37 +147,14 @@ void blog(){
    outtextxy(255,50,"HAZIR OL 1");
    delay(1100);
      arkaPlan_Oyun(0);
-
-
-      while (1){
-                   kahraman(0);
-                   if(k<13){
-                   al=rand()%7; 
-          if(al==0){al=al+1;}
-          al=al*35;
-           sag=200+al+105;}
-            k=i%19;
-            
-                   setfillstyle(1,k+2);
-     bar(200,0+(k*32),200+al,32+(k*32));
-      setfillstyle(1,k+3);
-     bar(sag,0+(k*32),691,32+(k*32));
-     delay(400);
-                   arkaPlan_Oyun(0);
-     i++; 
-     }                                   // while
-     
-     
+    }
+void blog_ciz(int al, int h, int col){
+   
+     int sag;         
+           sag=180+al+105;  
+              setfillstyle(1,col);
+     bar(180,1+(h*32),180+al,33+(h*32));
+              setfillstyle(1,col);
+     bar(sag,1+(h*32),705,33+(h*32));
+           
      }
-      
-void arkaPlan_Oyun(int w){
-   	setbkcolor(renk_ic);
-	setfillstyle(w,0);
-	bar(200,0,690,608);
-	}
-void kahraman(int x){
-     setfillstyle(1,BLACK);
-     bar(410+x,577,515+x,609);
-     
-     }         
-     
