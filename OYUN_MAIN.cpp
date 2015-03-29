@@ -12,6 +12,7 @@ void arkaPlan_Oyun(int w);
 void tutorial();
 void oyun();
 void kahraman(int x);
+void kahraman_sil(int x);
 void hazir_ol();
 void blog_ciz(int , int,  int);
 void pause();
@@ -82,7 +83,7 @@ void ana_menu(){
       setfillstyle(1,renk_ic);bar(x,y+250,x+20,y+270);            
       }
       
-      if(y==0) hazir_ol(); oyun() ;
+      if(y==0){ hazir_ol(); oyun() ;}
       if(y==50)  tutorial(); 
       if(y==100) exit(1);
     }
@@ -102,31 +103,37 @@ void oyun(){
 
 
       while (1){
-                   kahraman(x);
+                  kahraman(x); 
                    if (kbhit()){
                             
            key =getch();
-             if (key == 75){   if(x>-210)x-=35;}
-             if (key == 77){   if(x<+210)x+=35;}
-             if (key == 27){pause();}       
+             if (key == 75){   if(x>-210){kahraman_sil(x);x-=35;kahraman(x);}}
+             if (key == 77){   if(x<+210){kahraman_sil(x);x+=35;kahraman(x);}}
+             if (key == 27){ pause(); }       
            }
                 
+                  
+          
+ 
+          
+     delay(1);
+                   
+     oyun_hizi++; 
+     if(oyun_hizi==500){ oyun_hizi=0;
+     arkaPlan_Oyun(0);
                   if(i%29==0) r=rastgele(i);
                   if(i%29==5) r1=rastgele(i);
-                   if(i%29==10) r2=rastgele(i);
+                  if(i%29==10) r2=rastgele(i);
                   k=i%29;
                   l=k-5;
                   m=k-10;
-          blog_ciz(r2,m,renk+3); 
-          blog_ciz(r1,l,renk+10);
-          blog_ciz(r,k,renk);
- 
           
-     delay(20);
-                   arkaPlan_Oyun(0);
-     oyun_hizi++; 
-     if(oyun_hizi==20){i++; oyun_hizi=0;}
-     }                                   // while
+          blog_ciz(r2,m,renk); 
+          blog_ciz(r1,l,renk+10);
+          blog_ciz(r,k,renk+3);
+          i++;
+         }
+     }                                  
      
      
      }
@@ -136,11 +143,16 @@ void arkaPlan_Oyun(int w){
 	setfillstyle(w,0);
 	bar(180,0,705,609);
 	}
+	
 void kahraman(int x){
      setfillstyle(1,BLACK);
      bar(390+x,577,495+x,609);
-     
-     }         
+     }
+      
+void kahraman_sil(int x){
+     setfillstyle(1,renk_ic);
+     bar(390+x,577,495+x,609);
+     }             
      
      
 void hazir_ol(){
