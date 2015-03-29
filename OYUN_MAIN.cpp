@@ -135,17 +135,15 @@ void hazir_ol(){
           
            arkaPlan_Oyun(0);
              setcolor(1);
-     settextstyle(1,0,38);
-   outtextxy(255,50,"HAZIR OL 3");
-   settextstyle(1,0,38);
-     delay(1100);
+     settextstyle(2,0,53);
+   outtextxy(310,50,"HAZIR OL  3");
+       delay(1100);
      arkaPlan_Oyun(0);
-   outtextxy(255,50,"HAZIR OL 2");
-    settextstyle(1,0,38);
-        delay(1100);
+   outtextxy(310,50,"HAZIR OL  2");
+       delay(1100);
      arkaPlan_Oyun(0);
-   outtextxy(255,50,"HAZIR OL 1");
-   delay(1100);
+   outtextxy(310,50,"HAZIR OL  1");
+       delay(1100);
      arkaPlan_Oyun(0);
     }
 void blog_ciz(int al, int h, int col){
