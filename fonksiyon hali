@@ -10,6 +10,7 @@ int renk_block2 = COLOR(235,255,59);
 int renk_block3 = 10;
 int renk_block4 = COLOR(255,179,3);
 int renk_kah_ic = COLOR(0,233,237);
+int renk_kah_dis = COLOR(0,87,237);
 
 void ana_menu();
 void arkaPlan();
@@ -189,7 +190,7 @@ void arkaPlan_Oyun(int w){
 }
 	
 void kahraman(int x){
-     setfillstyle(1,BLACK);
+     setfillstyle(1,renk_kah_dis);
      bar(390+x,577,495+x,609);
      setfillstyle(1,renk_kah_ic);
      bar(395+x,582,490+x,604);
@@ -243,7 +244,6 @@ int rastgele(){
     srand(time(NULL)); 
     srand(time(NULL)+rand());                                            
     ras=rand()%13; 
-    //  if(ras==0){ras=ras+1;}
     ras=ras*35;
     return ras;   
 } 
