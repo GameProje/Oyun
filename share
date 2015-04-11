@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+typedef struct xx{
+        int value;
+        struct xx *n;       
+        }trial;
+        
+void add(trial *h, int temp){
+                h->value=temp;
+              h->n=new trial;
+              h=h->n;
+              h->n=NULL;
+     
+     };
+        
+int main (){
+    
+    int take,small,i=2;
+    trial *p,*q;
+    p=q=new trial;
+    printf("enter 1. number.\n");
+    scanf("%d",&take);
+    small=take;
+    q->value=take;
+    q->n=new trial;
+    q=q->n;
+    q->n=NULL;
+    while(1){
+              printf("enter %d. number.\n",i);
+              i++;
+              scanf("%d",&take);
+             add(q,take);
+            if (take==0) break;
+            }    
+            q=p->n;
+            while(q->n){
+                    if(q->value<=small) {
+                                        small=q->value;
+                                        q=q->n;
+                                        }
+                    else {
+                          q=q->n;
+                          }
+                    }
+                    printf("the smallest number=%d",small);
+                    delete[]q;
+                    delete[]p;
+    getch();
+    return 0;
+    }
