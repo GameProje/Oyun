@@ -32,6 +32,7 @@ int main (){
               i++;
               scanf("%d",&take);
              add(q,take);
+             q=q->n;
             if (take==0) break;
             }    
             q=p->n;
