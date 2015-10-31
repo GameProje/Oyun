@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <conio.h>
+
+typedef struct link {
+		int sicilno;
+		char ad[15];
+		char soyad[20];
+	  struct link *n;
+		
+		}aa;
+		
+	int menu();
+	void ekle (struct link *temp);
+//	void listele(struct link *temp);			
+		  
+		int main (){
+			int al;
+			 aa *first;
+		   first=new struct link;
+		   first->n=NULL;
+		   first->sicilno=-1;	
+		   
+			while(1==1){
+			al=menu();
+			if(al==1){ 
+				ekle(first);
+			}
+			else if(al==2){
+			//	listele(ilk);
+			printf("sicil no= %d",first->sicilno);
+			printf("%s ",first->ad);
+			printf("%s \n",first->soyad);
+			}
+			else if (al==3){break;}
+			}
+				
+			printf("MgM yazilimi kullandiginiz icin tesekkur ederiz...");
+			return 0;		
+		}
+		
+		int menu(){
+			int secim ;
+			printf("1-)kisi ekleme \n2-)listele  \n3-) cikis.. \n");
+			scanf("%d",&secim);
+			return secim;
+		}
+		
+		void ekle(aa *temp){
+			if((temp->sicilno)==-1){
+				printf("sicil no giriniz.\n");
+				scanf("%d",&temp->sicilno);
+				printf("ad giriniz.\n");
+				scanf("%s",&temp->ad);
+				printf("soy ad giriniz.");
+				scanf("%d",&temp->soyad);
+			
+			}	
+		}
+		
